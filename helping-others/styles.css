@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+.table {
+  margin: auto;
+  max-width: 90%;
+  display:grid;
+  grid-template-columns: repeat(2, auto);
+}
+
+.cell {
+ padding: 10px;
+ background-color: whitepink;
+ font-size: 1em;
+ outline: 1px solid black;
+}
+
+.row {
+  display: contents;
+}
+
+.header {
+  background-color: #cccccc;
+  font-size: 2em;
+  text-align: center;
+}
+
+
