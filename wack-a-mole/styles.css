@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+  font-size: 25px;
+}
+
+.top {
+  display:flex;
+  justify-content: space-evenly
+}
+
+.score-timer {
+  display:flex;
+  flex-direction: column;
+}
+
+.grid {
+  margin: auto;
+  width: 600px;
+  height: 600px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+.square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  border: 2px solid green;
+  font-size: 40px;
+  
+}
+.mole {
+  background-image: url('./mole.png');
+}
+
+.mole-hit {
+  background-color: green;
+}
+.mole-hit::before {
+  content: "WACK!!!";
+}
