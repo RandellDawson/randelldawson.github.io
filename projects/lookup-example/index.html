@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Example of Using Object Lookup</title>
+</head>
+
+<body>
+
+  <div>
+    <form name="check-input">
+      <label>
+        Choose Person: <select name="person" id="person">
+          <option>Select</option>
+          <option>Jeremy</option>
+          <option>Randell</option>
+          <option>Tyler</option>
+        </select>
+      </label>
+      <label>
+        Enter Exercise:
+        <input id="exercise" name="exercise" />
+      </label>
+      <button type="button" onclick="event.preventDefault();findExercise()">Find Exercise Info</button>
+    </form>
+    <div id="result-message"></div>
+  </div>
+  <script>
+    const people = [
+      {
+        name: 'Randell',
+        dailyExercises: {
+          running: '5 miles',
+          crunches: 50,
+          pushups: 80
+        }
+
+      },
+      {
+        name: 'Jeremy',
+        dailyExercises: {
+          swimming: '10 laps',
+          pushups: 100
+        }
+      },
+      {
+        name: 'Tyler',
+        dailyExercises: {
+          running: '3 miles',
+          crunches: 50,
+          squats: 25
+        }
+      }
+    ];
+
+    function getPerson(personName) {
+      const personObj = people.find(function (person) {
+        return personName === person.name;
+      });
+      return personObj;
+    }
+
+    function checkObj(obj, checkProp) {
+      console.log(obj, checkProp)
+      if (obj.hasOwnProperty(checkProp)) {
+        return obj[checkProp];
+      }
+      else {
+        return "Not Found";
+      }
+    }
+
+    function updateResult(message) {
+      document.getElementById('result-message').innerText = message;
+    }
+
+    function findExercise() {
+      const person = document.getElementById('person').value;
+      const exercise = document.getElementById('exercise').value;
+      if (person === '' || person === 'Select') {
+        updateResult('Please select a person from list.');
+      }
+      else {
+        const personObj = getPerson(person);
+        if (exercise === '') {
+          updateResult('Please enter an exercise name for person selected.');
+        }
+        else {
+          const exerciseInfo = checkObj(personObj.dailyExercises, exercise);
+          updateResult(`Result for ${exercise}: ${exerciseInfo}`);
+        }
+      }
+    }
+
+  </script>
+</body>
+
+</html>
